@@ -94,7 +94,8 @@ nav ul li a:hover, a.active{
     align-items: center;
 }
 .inp-width{
-    min-width: 300px;
+    min-width: unset;
+    max-width: 100px;
 }
 .plus-minus-btn{
     color: #3352F2;
@@ -121,4 +122,16 @@ nav ul li a:hover, a.active{
 .amount{
     display: flex;
     justify-content: space-between;
+}
+.high{
+    color: #58181b;
+    font-size: 15px;
+    font-weight: 500;
+}
+.book-content{
+    font-size: 60px;
+    text-align: center;
+    color: rgb(102, 18, 141);
+    display: none;
+    padding-top: 300px;
 }

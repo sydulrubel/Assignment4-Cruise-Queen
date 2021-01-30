@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
     <!-- Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -27,7 +28,7 @@
     </header>
 
     <!--Booking Section-->
-    <main class="main-content container">
+    <main id="main" class="main-content container">
 
         <div class="booking-content">
             <h1>Cruise Queen</h1>
@@ -55,29 +56,40 @@
                     <input class="inp-style" type="date" name="">
                 </div>
             </div>
-            <div class="input-group f-class">
+            <div class="input-group ">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
                 </div>
-                <div class="plus-minus-btn">
-                    <p>+ -</p>
-                </div>
+                <div class=" f-class plus-minus-btn">
+                    <button id="first-decrease"  class="btn btn-default"><i class="fas fa-minus"></i></button><br>
+                    <p class="high">Qty</p>
+                    <input id="first-input" type="text" class=" text-center inp-width" value="1">
+                    <button id="first-increase" class="btn btn-default"><i class="fas fa-plus"></i></button><br>
+                   <div class="f-class">
+                    <p class="high">Price</p>
+                    <input id="first-total" type="text" class=" text-center inp-width" value="$150">
+                   </div>
             </div>
             
-            <div class="input-group f-class">
+            <div class="input-group">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    
                 </div>
-                <div class="plus-minus-btn">
-                    <p> <span>+</span> <span>-</span> </p>
+                <div class=" f-class plus-minus-btn">
+                    <button  class="btn btn-default"><i class="fas fa-minus"></i></button><br>
+                    <p class="high">Qty</p>
+                    <input type="text" class=" text-center inp-width" value="1">
+                    <button class="btn btn-default"><i class="fas fa-plus"></i></button><br>
+                   <div class="f-class">
+                    <p class="high">Price</p>
+                    <input type="text" class=" text-center inp-width" value="$100">
                 </div>
             </div>
             <div class="calculations">
                 <div class="amount">
                     <div class="left">
-                        <p>Subtotal</p>
+                        <p>Subtotal Price</p>
                     </div>
                     <div class="right">
                         <p>$500</p>
@@ -95,17 +107,58 @@
                 <hr>
                 <div class="amount">
                     <div class="left">
-                        <h4>Total</h4>
+                        <h4>Total Price</h4>
                     </div>
                     <div class="right">
                         <p>$550</p>
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="book" class="btn-style">Book Now</button>
         </div>
+        
     </main>
+    <div id="book-content" class="book-content">
+        <h2>CONGRATULATION;</h2>
+        <h2>Welcome To Explore Ocean!</h2>
+    </div>
+    <script>
+        // Book Now button 
+        document.getElementById('book').addEventListener('click', function(){
+            const lastText = document.getElementById('book-content');
+            const first = document.getElementById('main');
 
+            first.style.display = 'none';
+            lastText.style.display = "block";
+        })
+
+
+        // firstclass ticket booking
+        document.getElementById("first-increase").addEventListener('click', function(){
+            ticketPrice(true);  
+        })
+
+        document.getElementById("first-decrease").addEventListener('click', function(){
+            ticketPrice(false);   
+        })
+
+
+        function ticketPrice(ticketIncrease) {
+            const firstInput = document.getElementById('first-input');
+            const firstInputNum = parseInt(firstInput.value);
+            let firstNum = firstInputNum ;
+            if(ticketIncrease == true){
+                firstNum = firstInputNum + 1;
+            }
+            if(ticketIncrease == false && firstInputNum > 0){
+                firstNum = firstInputNum -1 ;
+            }
+            firstInput.value = firstNum ;
+            const firstPrice = firstNum * 150 ;
+            document.getElementById('first-total').value = ('$' + firstPrice) ;
+        }
+    </script>
+   
     <!--Thank You-->
 </body>
 
